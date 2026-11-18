@@ -60,7 +60,9 @@ def take_to_week(tasks, weeks):
         print("Сначала начните неделю")
         return
     task = find_task(tasks)
-    if task:
+    if task and task[3] == "готово":
+        print("Задача уже выполнена")
+    elif task:
         task[2] = weeks[-1][0]
         save(TASKS_FILE, tasks)
         print("Задача взята в неделю", task[2])
